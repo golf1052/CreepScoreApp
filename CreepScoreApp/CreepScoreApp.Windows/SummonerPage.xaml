@@ -1,0 +1,197 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreepScoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:System="using:System"
+    x:Class="CreepScoreApp.SummonerPage"
+    mc:Ignorable="d">
+
+	<Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+		<Hub>
+			<Hub.Header>
+				<StackPanel Orientation="Horizontal" Margin="0">
+					<Button x:Name="backButton" Content="Button" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,39,0" Click="backButton_Click"/>
+					<Image x:Name="summonerProfileIconImage" Height="85" Width="85"/>
+					<TextBlock x:Name="summonerNameTextBlock" Text="golf1052" TextTrimming="CharacterEllipsis" LineStackingStrategy="BlockLineHeight" OpticalMarginAlignment="TrimSideBearings" VerticalAlignment="Center" Margin="20,0,0,0"/>
+				</StackPanel>
+			</Hub.Header>
+			<HubSection x:Name="rankedLeaguesHubSection">
+				<DataTemplate>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="10"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="100"/>
+								<ColumnDefinition Width="50"/>
+								<ColumnDefinition Width="100"/>
+								<ColumnDefinition Width="385"/>
+							</Grid.ColumnDefinitions>
+							<TextBlock x:Name="tierTextBlock" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Challenger" VerticalAlignment="Center" FontSize="18.667" Loaded="tierTextBlock_Loaded"/>
+							<TextBlock x:Name="divisionTextBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="I" VerticalAlignment="Center" FontSize="18.667" Grid.Column="1" Loaded="divisionTextBlock_Loaded"/>
+							<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2">
+								<Button x:Name="upDivisionButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" BorderThickness="0" Loaded="upDivisionButton_Loaded" Click="upDivisionButton_Click">
+									<SymbolIcon Symbol="Up"/>
+								</Button>
+								<Button x:Name="downDivisonButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{x:Null}" BorderThickness="0" Loaded="downDivisonButton_Loaded" Click="downDivisonButton_Click">
+									<SymbolIcon Symbol="Up" RenderTransformOrigin="0.5,0.5">
+										<SymbolIcon.RenderTransform>
+											<CompositeTransform Rotation="180"/>
+										</SymbolIcon.RenderTransform>
+									</SymbolIcon>
+								</Button>
+							</StackPanel>
+							<TextBlock x:Name="tierNameTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Karma's Karma" VerticalAlignment="Center" Grid.Column="3" FontSize="18.667" Loaded="tierNameTextBlock_Loaded"/>
+							<ComboBox x:Name="queueTypeComboBox" HorizontalAlignment="Right" VerticalAlignment="Center" Width="100" Grid.Column="3" Loaded="queueTypeComboBox_Loaded" SelectionChanged="queueTypeComboBox_SelectionChanged"/>
+						</Grid>
+						<Grid Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition Width="40"/>
+								<ColumnDefinition Width="275"/>
+								<ColumnDefinition Width="110"/>
+								<ColumnDefinition Width="50"/>
+								<ColumnDefinition Width="135"/>
+								<ColumnDefinition Width="20"/>
+							</Grid.ColumnDefinitions>
+							<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Rank" VerticalAlignment="Center" FontSize="12" Grid.Column="1"/>
+							<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Summoner" VerticalAlignment="Center" Grid.Column="2" FontSize="12"/>
+							<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Emblems" VerticalAlignment="Center" Grid.Column="3" FontSize="12"/>
+							<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Wins" VerticalAlignment="Center" Grid.Column="4" FontSize="12"/>
+							<TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="LP" VerticalAlignment="Center" Grid.Column="5" FontSize="12"/>
+							<Border x:Name="leagueBorder" BorderThickness="0,0,0,1" Grid.ColumnSpan="7" Loaded="leagueBorder_Loaded" BorderBrush="#FFF9C518" Margin="0" Grid.RowSpan="2"/>
+						</Grid>
+						<ListView x:Name="leagueListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource LeagueEntryListViewTemplateW8}" Loaded="leagueListView_Loaded" SelectionMode="None" Grid.Row="3" IsItemClickEnabled="True" ItemClick="leagueListView_ItemClick"/>
+					</Grid>
+				</DataTemplate>
+			</HubSection>
+            <HubSection Header="Match History">
+                <DataTemplate>
+					<Grid>
+                        <StackPanel>
+                        	<Button x:Name="onlineMatchHistoryButton" Content="Online Match History" HorizontalAlignment="Left" VerticalAlignment="Top" Width="798" Click="onlineMatchHistoryButton_Click" Margin="0">
+                        		<Button.Background>
+                        			<SolidColorBrush Color="{StaticResource CreepScoreYellow}"/>
+                        		</Button.Background>
+                        		<Button.BorderBrush>
+                        			<SolidColorBrush Color="{StaticResource CreepScoreYellow}"/>
+                        		</Button.BorderBrush>
+                        	</Button>
+                        	<ListView x:Name="recentGamesListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource RecentGameListViewTemplate}" SelectionMode="None" Loaded="recentGamesListView_Loaded"/>
+                        </StackPanel>
+                    </Grid>
+				</DataTemplate>
+			</HubSection>
+			<HubSection Header="HubSection 2">
+				<DataTemplate>
+					<Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="50"/>
+							<RowDefinition Height="202"/>
+							<RowDefinition Height="5"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+                        <TextBlock x:Name="runePageNameTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="apples" VerticalAlignment="Center" Margin="5,0,0,0" FontSize="16" Grid.ColumnSpan="2" Loaded="runePageNameTextBlock_Loaded"/>
+                        <ComboBox x:Name="runePageComboBox" VerticalAlignment="Center" Grid.Column="2" Padding="8,0,0,0" Loaded="runePageComboBox_Loaded" SelectionChanged="runePageComboBox_SelectionChanged"/>
+                        <Image x:Name="rune28Image" HorizontalAlignment="Center" Height="128" VerticalAlignment="Center" Width="128" Grid.Row="1" Loaded="rune28Image_Loaded"/>
+                        <Image x:Name="rune29Image" HorizontalAlignment="Center" Height="128" VerticalAlignment="Center" Width="128" Grid.Column="1" Grid.Row="1" Loaded="rune29Image_Loaded"/>
+                        <Image x:Name="rune30Image" HorizontalAlignment="Center" Height="128" VerticalAlignment="Center" Width="128" Grid.Column="2" Grid.Row="1" Loaded="rune30Image_Loaded"/>
+						<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="3">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+							<Image x:Name="rune1Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="rune1Image_Loaded"/>
+                            <Image x:Name="rune2Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="2" Loaded="rune2Image_Loaded"/>
+                            <Image x:Name="rune3Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="4" Loaded="rune3Image_Loaded"/>
+                            <Image x:Name="rune4Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Loaded="rune4Image_Loaded"/>
+                            <Image x:Name="rune5Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="2" Loaded="rune5Image_Loaded"/>
+                            <Image x:Name="rune6Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="4" Loaded="rune6Image_Loaded"/>
+                            <Image x:Name="rune7Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Loaded="rune7Image_Loaded"/>
+                            <Image x:Name="rune8Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="2" Loaded="rune8Image_Loaded"/>
+                            <Image x:Name="rune9Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="4" Loaded="rune9Image_Loaded"/>
+						</Grid>
+						<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+                            <Image x:Name="rune10Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="rune10Image_Loaded"/>
+                            <Image x:Name="rune11Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="2" Loaded="rune11Image_Loaded"/>
+                            <Image x:Name="rune12Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="4" Loaded="rune12Image_Loaded"/>
+                            <Image x:Name="rune13Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Loaded="rune13Image_Loaded"/>
+                            <Image x:Name="rune14Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="2" Loaded="rune14Image_Loaded"/>
+                            <Image x:Name="rune15Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="4" Loaded="rune15Image_Loaded"/>
+                            <Image x:Name="rune16Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Loaded="rune16Image_Loaded"/>
+                            <Image x:Name="rune17Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="2" Loaded="rune17Image_Loaded"/>
+                            <Image x:Name="rune18Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="4" Loaded="rune18Image_Loaded"/>
+						</Grid>
+						<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Grid.Row="3">
+							<Grid.RowDefinitions>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+								<RowDefinition Height="5"/>
+								<RowDefinition/>
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+								<ColumnDefinition Width="5"/>
+								<ColumnDefinition/>
+							</Grid.ColumnDefinitions>
+                            <Image x:Name="rune19Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="rune19Image_Loaded"/>
+                            <Image x:Name="rune20Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="2" Loaded="rune20Image_Loaded"/>
+                            <Image x:Name="rune21Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Column="4" Loaded="rune21Image_Loaded"/>
+                            <Image x:Name="rune22Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Loaded="rune22Image_Loaded"/>
+                            <Image x:Name="rune23Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="2" Loaded="rune23Image_Loaded"/>
+                            <Image x:Name="rune24Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="2" Grid.Column="4" Loaded="rune24Image_Loaded"/>
+                            <Image x:Name="rune25Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Loaded="rune25Image_Loaded"/>
+                            <Image x:Name="rune26Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="2" Loaded="rune26Image_Loaded"/>
+                            <Image x:Name="rune27Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Margin="0" Grid.Row="4" Grid.Column="4" Loaded="rune27Image_Loaded"/>
+						</Grid>
+						<ListView x:Name="runePageInfoListView" Grid.Column="4" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="runePageInfoListView_Loaded" ItemTemplate="{StaticResource RunePageListViewTemplate}"/>
+					</Grid>
+				</DataTemplate>
+			</HubSection>
+		</Hub>
+
+	</Grid>
+</Page>

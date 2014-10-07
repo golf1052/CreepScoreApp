@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="CreepScoreApp.ChampionAbilitiesDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreepScoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    	<Hub x:Name="abilitiesHub" Loaded="abilitiesHub_Loaded">
+    		<Hub.Header>
+    			<StackPanel Orientation="Horizontal" Margin="0">
+    				<Button x:Name="backButton" Content="Button" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Click="backButton_Click" Margin="0,0,39,0"/>
+    				<TextBlock x:Name="championFullNameTextBlock" Text="Karma" TextTrimming="CharacterEllipsis" LineStackingStrategy="BlockLineHeight" OpticalMarginAlignment="TrimSideBearings" Loaded="championFullNameTextBlock_Loaded" Margin="0"/>
+    			</StackPanel>
+    		</Hub.Header>
+    		<HubSection x:Name="passiveHubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="passiveHeaderImage" Width="64" Height="64"></Image>
+                        <TextBlock x:Name="passiveHeaderTextBlock" Text="Passive" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid>
+    					<TextBlock x:Name="passiveDescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="Description: " VerticalAlignment="Top" FontSize="{StaticResource DescriptionTextSize}" Loaded="passiveDescriptionTextBlock_Loaded"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="ability1HubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="ability1HeaderImage" Width="64" Height="64"></Image>
+                        <TextBlock x:Name="ability1HeaderTextBlock" Text="Ability 1" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid>
+    					<TextBlock x:Name="ability1DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="Description: " VerticalAlignment="Top" FontSize="{StaticResource DescriptionTextSize}" Loaded="ability1DescriptionTextBlock_Loaded"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="ability2HubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="ability2HeaderImage" Width="64" Height="64"></Image>
+                        <TextBlock x:Name="ability2HeaderTextBlock" Text="Ability 2" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid>
+    					<TextBlock x:Name="ability2DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="Description: " VerticalAlignment="Top" FontSize="{StaticResource DescriptionTextSize}" Loaded="ability2DescriptionTextBlock_Loaded"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="ability3HubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="ability3HeaderImage" Width="64" Height="64"></Image>
+                        <TextBlock x:Name="ability3HeaderTextBlock" Text="Ability 3" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid>
+    					<TextBlock x:Name="ability3DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="Description: " VerticalAlignment="Top" FontSize="{StaticResource DescriptionTextSize}" Loaded="ability3DescriptionTextBlock_Loaded"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="ability4HubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="ability4HeaderImage" Width="64" Height="64"></Image>
+                        <TextBlock x:Name="ability4HeaderTextBlock" Text="Ability 4" VerticalAlignment="Center" Margin="5,0,0,0"></TextBlock>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid>
+    					<TextBlock x:Name="ability4DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="Description: " VerticalAlignment="Top" FontSize="{StaticResource DescriptionTextSize}" Loaded="ability4DescriptionTextBlock_Loaded"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    	</Hub>
+
+    </Grid>
+</Page>

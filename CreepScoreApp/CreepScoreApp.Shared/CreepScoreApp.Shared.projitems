@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>d430859d-0426-49d9-84d1-17ea20625355</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CreepScoreApp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)ApiKey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AppConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\ChampionsGridViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\LeagueListViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\RecentGameListViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\RunePageInfoListViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\SkinsGridViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)RegionComboBoxSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\1055.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\3361.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\8001.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\CreepScoreLogo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\flash.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\AbilityPowerIcon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\AttackPowerIcon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\DefensePowerIcon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Icons\DifficultyIcon.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Karma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)LoadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

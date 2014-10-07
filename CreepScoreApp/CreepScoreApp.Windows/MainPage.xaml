@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="CreepScoreApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreepScoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    	<Hub x:Name="mainHub">
+            <Hub.Header>
+                <Image Source="Assets/CreepScoreLogo.png" Height="100"/>
+            </Hub.Header>
+            <HubSection x:Name="heroSection" Loaded="heroSection_Loaded">
+                <HubSection.Background>
+                    <ImageBrush x:Name="heroImage"></ImageBrush>
+                </HubSection.Background>
+    			<DataTemplate>
+                    <Grid>
+                    	<TextBlock x:Name="heroName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Karma" VerticalAlignment="Top" FontSize="150" Loaded="heroName_Loaded" Margin="0" FontWeight="ExtraLight" Tapped="heroName_Tapped" Foreground="White"/>
+                    </Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection Header="">
+    			<DataTemplate>
+    				<Grid>
+    					<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+    						<SearchBox x:Name="summonerSearchBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="250" PlaceholderText="search for summoner" Margin="0" QuerySubmitted="summonerSearchBox_QuerySubmitted" GotFocus="summonerSearchBox_GotFocus" SearchHistoryEnabled="False"/>
+                            <ComboBox x:Name="regionComboBox" HorizontalAlignment="Center" VerticalAlignment="Top" Width="246" Margin="0,10,0,0" SelectedIndex="0" Loaded="regionComboBox_Loaded">
+                                <ComboBoxItem Content="North America"/>
+                                <ComboBoxItem Content="Europe West"/>
+                                <ComboBoxItem Content="Europe Nordic &amp; East"/>
+                                <ComboBoxItem Content="Oceania"/>
+                                <ComboBoxItem Content="Korea"/>
+                                <ComboBoxItem Content="Brazil"/>
+                                <ComboBoxItem Content="Latin America North"/>
+                                <ComboBoxItem Content="Latin America South"/>
+                                <ComboBoxItem Content="Russia"/>
+                                <ComboBoxItem Content="Turkey"/>
+                            </ComboBox>
+                            <TextBlock x:Name="errorTextBlock" TextWrapping="Wrap" Text="Cannot find summoner" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14.667" Visibility="Collapsed" Loaded="cannotFindSummonerTextBlock_Loaded"/>
+                            <ProgressRing x:Name="searchingForSummonerRing" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="50" Height="50" Margin="0,10,0,0" Loaded="searchingForSummonerRing_Loaded"/>
+    					</StackPanel>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="settingsSection" Header="HubSection 2">
+    			<DataTemplate>
+    				<Grid>
+    					<Button x:Name="settingsButton" Content="Settings" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="settingsButton_Click"/>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    	</Hub>
+
+    </Grid>
+</Page>

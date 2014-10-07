@@ -1,0 +1,199 @@
+﻿<Page
+    x:Class="CreepScoreApp.ChampionDetailPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreepScoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+	<Page.Resources>
+		<DataTemplate x:Key="SkinsGridViewTemplate">
+			<Grid>
+				<Border BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<Border.BorderBrush>
+						<SolidColorBrush Color="{StaticResource CreepScoreYellow}"/>
+					</Border.BorderBrush>
+					<StackPanel>
+						<Image Height="181.818181" Width="100" Source="{Binding Image}"/>
+						<TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontSize="9.333" Margin="0,0,0,5" TextTrimming="CharacterEllipsis"/>
+					</StackPanel>
+				</Border>
+			</Grid>
+		</DataTemplate>
+	</Page.Resources>
+
+    <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    	<Hub x:Name="championHub" SectionHeaderClick="championHub_SectionHeaderClick">
+    		<Hub.Header>
+    			<StackPanel Orientation="Horizontal" Margin="0">
+    				<Button x:Name="backButton" Content="Button" Style="{StaticResource NavigationBackButtonNormalStyle}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,39,0" Click="backButton_Click"/>
+    				<TextBlock x:Name="championFullNameTextBlock" Text="Karma" TextTrimming="CharacterEllipsis" LineStackingStrategy="BlockLineHeight" OpticalMarginAlignment="TrimSideBearings" Loaded="championFullNameTextBlock_Loaded"/>
+    			</StackPanel>
+    		</Hub.Header>
+    		<HubSection x:Name="championMainSection" Loaded="championMainSection_Loaded" Header="Stats">
+    			<HubSection.Background>
+    				<ImageBrush x:Name="championImage" Opacity="1"/>
+    			</HubSection.Background>
+    			<DataTemplate>
+    				<Grid>
+    					<Grid.RowDefinitions>
+    						<RowDefinition Height="Auto"/>
+    						<RowDefinition Height="Auto"/>
+    					</Grid.RowDefinitions>
+    					<Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+    						<Rectangle Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}" Stroke="Black" StrokeThickness="0" Margin="0" Opacity="0.8"/>
+    						<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5">
+    							<Grid.RowDefinitions>
+    								<RowDefinition Height="Auto"/>
+    								<RowDefinition Height="Auto"/>
+    								<RowDefinition Height="Auto"/>
+    							</Grid.RowDefinitions>
+    							<Grid x:Name="simpleInfoGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0" Grid.Row="1">
+    								<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+    									<StackPanel Orientation="Horizontal">
+    										<Image Source="Assets/Icons/AttackPowerIcon.png" Width="22" Margin="0,0,1,0"/>
+    										<Rectangle x:Name="attackRectangle" Fill="#FFDF2020" Height="21" Stroke="Black" Width="200" Loaded="attackRectangle_Loaded" StrokeThickness="0"/>
+    									</StackPanel>
+    									<StackPanel Orientation="Horizontal">
+    										<Image Width="22" Source="Assets/Icons/DefensePowerIcon.png"/>
+    										<Rectangle x:Name="defenseRectangle" Fill="#FF20DF20" Height="21" Stroke="Black" Width="200" Loaded="defenseRectangle_Loaded" StrokeThickness="0"/>
+    									</StackPanel>
+    									<StackPanel Orientation="Horizontal">
+    										<Image Width="22" Source="Assets/Icons/AbilityPowerIcon.png"/>
+    										<Rectangle x:Name="abilityRectangle" Fill="#FF2020DF" Height="21" Stroke="Black" Width="200" Loaded="abilityRectangle_Loaded" StrokeThickness="0"/>
+    									</StackPanel>
+    									<StackPanel Orientation="Horizontal">
+    										<Image Width="22" Source="Assets/Icons/DifficultyIcon.png"/>
+    										<Rectangle x:Name="difficultyRectangle" Fill="#FF8020DF" Height="21" Stroke="Black" Width="200" Loaded="difficultyRectangle_Loaded" StrokeThickness="0"/>
+    									</StackPanel>
+    								</StackPanel>
+    							</Grid>
+    							<Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0" Grid.Row="2">
+    								<Grid.RowDefinitions>
+    									<RowDefinition Height="Auto"/>
+    									<RowDefinition Height="Auto"/>
+    									<RowDefinition Height="Auto"/>
+    									<RowDefinition Height="Auto"/>
+    									<RowDefinition Height="Auto"/>
+    								</Grid.RowDefinitions>
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition/>
+    									<ColumnDefinition Width="10"/>
+    									<ColumnDefinition/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition/>
+    								</Grid.ColumnDefinitions>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Health" VerticalAlignment="Top" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Health Regen." VerticalAlignment="Top" Grid.Row="1" FontSize="16"/>
+    								<TextBlock x:Name="powerTypeTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mana" VerticalAlignment="Top" Grid.Row="2" FontSize="16" Loaded="powerTypeTextBlock_Loaded"/>
+    								<TextBlock x:Name="powerTypeRegenTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mana Regen." VerticalAlignment="Top" Grid.Row="3" FontSize="16" Loaded="powerTypeRegenTextBlock_Loaded"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Range" VerticalAlignment="Top" Grid.Row="4" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Attack Damage" VerticalAlignment="Top" Grid.Column="4" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Attack Speed" VerticalAlignment="Top" Grid.Row="1" Grid.Column="4" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Armor" VerticalAlignment="Top" Grid.Row="2" Grid.Column="4" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Magic Res." VerticalAlignment="Top" Grid.Row="3" Grid.Column="4" FontSize="16"/>
+    								<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Move Speed" VerticalAlignment="Top" Grid.Row="4" Grid.Column="4" FontSize="16"/>
+    								<TextBlock x:Name="healthTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="383 (+83)" VerticalAlignment="Top" Grid.Column="2" FontSize="16" Loaded="healthTextBlock_Loaded"/>
+    								<TextBlock x:Name="healthRegenTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="4.7 (+0.55)" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" FontSize="16" Loaded="healthRegenTextBlock_Loaded"/>
+    								<TextBlock x:Name="manaTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="290 (+50)" VerticalAlignment="Top" Grid.Row="2" Grid.Column="2" FontSize="16" Loaded="manaTextBlock_Loaded"/>
+    								<TextBlock x:Name="manaRegenTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="6.8 (+0.65)" VerticalAlignment="Top" Grid.Row="3" Grid.Column="2" FontSize="16" Loaded="manaRegenTextBlock_Loaded"/>
+    								<TextBlock x:Name="rangeTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="525" VerticalAlignment="Top" Grid.Row="4" Grid.Column="2" FontSize="16" Loaded="rangeTextBlock_Loaded"/>
+    								<TextBlock x:Name="attackDamageTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="50 (+3.3)" VerticalAlignment="Top" Grid.Column="6" FontSize="16" Loaded="attackDamageTextBlock_Loaded"/>
+    								<TextBlock x:Name="attackSpeedTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="0.625 (+2.3%)" VerticalAlignment="Top" Grid.Column="6" Grid.Row="1" FontSize="16" Loaded="attackSpeedTextBlock_Loaded"/>
+    								<TextBlock x:Name="armorTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="14 (+3.8)" VerticalAlignment="Top" Grid.Column="6" Grid.Row="2" FontSize="16" Loaded="armorTextBlock_Loaded"/>
+    								<TextBlock x:Name="magicResTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="30 (+0)" VerticalAlignment="Top" Grid.Column="6" Grid.Row="3" FontSize="16" Loaded="magicResTextBlock_Loaded"/>
+    								<TextBlock x:Name="moveSpeedTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="335" VerticalAlignment="Top" Grid.Column="6" Grid.Row="4" FontSize="16" Loaded="moveSpeedTextBlock_Loaded"/>
+    							</Grid>
+    						</Grid>
+    					</Grid>
+    					<Grid x:Name="skinsGridViewGrid" HorizontalAlignment="Left" Height="225" VerticalAlignment="Top" Loaded="skinsGridViewGrid_Loaded" Grid.Row="1">
+    						<GridView x:Name="skinsGridView" Margin="0" ItemTemplate="{StaticResource SkinsGridViewTemplate}" Loaded="skinsGridView_Loaded" SelectionChanged="skinsGridView_SelectionChanged" Header=""/>
+    					</Grid>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="abilitiesHubSection" Header="Abilities" IsHeaderInteractive="True">
+    			<DataTemplate>
+    				<Grid>
+    					<Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+    						<Grid.RowDefinitions>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="10"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="10"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="10"/>
+    							<RowDefinition Height="Auto"/>
+    							<RowDefinition Height="10"/>
+    							<RowDefinition Height="Auto"/>
+    						</Grid.RowDefinitions>
+    						<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+    							<TextBlock x:Name="passiveNameTextBlock" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Passive" VerticalAlignment="Top" FontSize="16" Loaded="passiveNameTextBlock_Loaded"/>
+    							<Grid Margin="0,5,0,0">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition Width="Auto"/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition Width="500"/>
+    								</Grid.ColumnDefinitions>
+    								<Image x:Name="passiveImage" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="passiveImage_Loaded"/>
+    								<TextBlock x:Name="passiveDescriptionTextBlock" HorizontalAlignment="Left" Text="Damaging enemy champions with Karma's abilities refreshes 2 seconds of  Mantra's cooldown, and half that amount on basic attacks against enemy champions." VerticalAlignment="Top" Grid.Column="2" TextTrimming="CharacterEllipsis" TextWrapping="WrapWholeWords" Loaded="passiveDescriptionTextBlock_Loaded" FontSize="{StaticResource DescriptionTextSize}"/>
+    							</Grid>
+    						</StackPanel>
+    						<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2">
+    							<TextBlock x:Name="ability1TextBlock" TextWrapping="Wrap" Text="TextBlock" FontSize="16" Loaded="ability1TextBlock_Loaded"/>
+    							<Grid Margin="0,5,0,0">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition Width="500"/>
+    								</Grid.ColumnDefinitions>
+    								<Image x:Name="ability1Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="ability1Image_Loaded"/>
+    								<TextBlock x:Name="ability1DescriptionTextBlock" HorizontalAlignment="Left" Margin="0,0,0,-6" TextWrapping="WrapWholeWords" Text="TextBlock" VerticalAlignment="Top" Grid.Column="3" FontSize="{StaticResource DescriptionTextSize}" TextTrimming="CharacterEllipsis" Loaded="ability1DescriptionTextBlock_Loaded"/>
+    							</Grid>
+    						</StackPanel>
+    						<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4">
+    							<TextBlock x:Name="ability2TextBlock" TextWrapping="Wrap" Text="TextBlock" FontSize="16" Loaded="ability2TextBlock_Loaded"/>
+    							<Grid Margin="0,5,0,0">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition Width="Auto"/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition Width="500"/>
+    								</Grid.ColumnDefinitions>
+    								<Image x:Name="ability2Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="ability2Image_Loaded"/>
+    								<TextBlock x:Name="ability2DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="TextBlock" VerticalAlignment="Top" Grid.Column="2" FontSize="{StaticResource DescriptionTextSize}" TextTrimming="CharacterEllipsis" Loaded="ability2DescriptionTextBlock_Loaded"/>
+    							</Grid>
+    						</StackPanel>
+    						<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="6">
+    							<TextBlock x:Name="ability3TextBlock" TextWrapping="Wrap" Text="TextBlock" FontSize="16" Loaded="ability3TextBlock_Loaded"/>
+    							<Grid Margin="0,5,0,0">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition Width="Auto"/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition Width="500"/>
+    								</Grid.ColumnDefinitions>
+    								<Image x:Name="ability3Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="ability3Image_Loaded"/>
+    								<TextBlock x:Name="ability3DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="TextBlock" VerticalAlignment="Top" Grid.Column="2" FontSize="{StaticResource DescriptionTextSize}" TextTrimming="CharacterEllipsis" Loaded="ability3DescriptionTextBlock_Loaded"/>
+    							</Grid>
+    						</StackPanel>
+    						<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="8">
+    							<TextBlock x:Name="ability4TextBlock" TextWrapping="Wrap" Text="TextBlock" FontSize="16" Loaded="ability4TextBlock_Loaded"/>
+    							<Grid Margin="0,5,0,0">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition Width="Auto"/>
+    									<ColumnDefinition Width="5"/>
+    									<ColumnDefinition Width="500"/>
+    								</Grid.ColumnDefinitions>
+    								<Image x:Name="ability4Image" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="64" Loaded="ability4Image_Loaded"/>
+    								<TextBlock x:Name="ability4DescriptionTextBlock" HorizontalAlignment="Left" TextWrapping="WrapWholeWords" Text="TextBlock" VerticalAlignment="Top" Grid.Column="2" FontSize="{StaticResource DescriptionTextSize}" TextTrimming="CharacterEllipsis" Loaded="ability4DescriptionTextBlock_Loaded"/>
+    							</Grid>
+    						</StackPanel>
+    					</Grid>
+    				</Grid>
+    			</DataTemplate>
+    		</HubSection>
+    	</Hub>
+
+    </Grid>
+</Page>
