@@ -53,33 +53,6 @@ namespace CreepScoreApp
                 if (realmString == AppConstants.realmData.v)
                 {
                     loadingText.Text = "versions match. loading saved patch data";
-                    //StorageFile championsFile = await localFolder.TryGetItemAsync("ChampionsData.json") as StorageFile;
-
-                    //// if the versions match then look for the champions data file
-                    //if (championsFile != null)
-                    //{
-                    //    // if so then read the file and load the champions data
-                    //    string championsString = await FileIO.ReadTextAsync(championsFile);
-                    //    JObject championsObject = JObject.Parse(championsString);
-                    //    championsData = creepScore.LoadChampionListStatic(championsObject);
-
-                    //    // then launch into the main application
-                    //    loadingText.Text = "launching";
-                    //    LaunchIntoApplication();
-                    //}
-                    //else
-                    //{
-                    //    // if not then load it from the internet
-                    //    loadingText.Text = "saved champion data file not found. fetching current champion data";
-                    //    championsFile = await localFolder.CreateFileAsync("ChampionsData.json");
-                    //    Task task2 = Task.Run(async () => { championsData = await creepScore.RetrieveChampionsData(CreepScore.Region.NA, CreepScoreAPI.Constants.StaticDataConstants.ChampData.All); });
-                    //    task2.Wait();
-                    //    await FileIO.WriteTextAsync(championsFile, championsData.ToString());
-
-                    //    // now launch into the main application
-                    //    loadingText.Text = "launching";
-                    //    LaunchIntoApplication();
-                    //}
 
                     loadingText.Text = "loading saved champion data";
                     AppConstants.championsData = await ReadAndLoadData<ChampionListStatic, StaticDataConstants.ChampData>(CreepScore.Region.NA, AppConstants.championsData, StaticDataConstants.ChampData.All, localFolder, "ChampionsData.json", AppConstants.creepScore.LoadChampionListStatic, AppConstants.creepScore.RetrieveChampionsData);
@@ -105,32 +78,6 @@ namespace CreepScoreApp
                     // if the versions do not match write the current version to the file then write the new champions data
                     loadingText.Text = "versions do not match. fetching current patch data";
                     await FileIO.WriteTextAsync(realmFile, AppConstants.realmData.v);
-
-                    //StorageFile championsFile = await localFolder.TryGetItemAsync("ChampionsData.json") as StorageFile;
-
-                    //if (championsFile != null)
-                    //{
-                    //    // the file is there, write over it with the new data
-                    //    Task task2 = Task.Run(async () => { championsData = await creepScore.RetrieveChampionsData(CreepScore.Region.NA, CreepScoreAPI.Constants.StaticDataConstants.ChampData.All); });
-                    //    task2.Wait();
-                    //    await FileIO.WriteTextAsync(championsFile, championsData.ToString());
-
-                    //    // then launch into the main application
-                    //    loadingText.Text = "launching";
-                    //    LaunchIntoApplication();
-                    //}
-                    //else
-                    //{
-                    //    // the file is not there, create it then load it with data
-                    //    championsFile = await localFolder.CreateFileAsync("ChampionsData.json");
-                    //    Task task2 = Task.Run(async () => { championsData = await creepScore.RetrieveChampionsData(CreepScore.Region.NA, CreepScoreAPI.Constants.StaticDataConstants.ChampData.All); });
-                    //    task2.Wait();
-                    //    await FileIO.WriteTextAsync(championsFile, championsData.ToString());
-
-                    //    // now launch into the main application
-                    //    loadingText.Text = "launching";
-                    //    LaunchIntoApplication();
-                    //}
 
                     loadingText.Text = "fetching current champion data";
                     AppConstants.championsData = await ReadAndOverwriteData<ChampionListStatic, StaticDataConstants.ChampData>(CreepScore.Region.NA, AppConstants.championsData, StaticDataConstants.ChampData.All, localFolder, "ChampionsData.json", AppConstants.creepScore.RetrieveChampionsData);
@@ -159,33 +106,6 @@ namespace CreepScoreApp
                 realmFile = await localFolder.CreateFileAsync("RealmData.json");
                 await FileIO.WriteTextAsync(realmFile, AppConstants.realmData.v);
 
-                //StorageFile championsFile = await localFolder.TryGetItemAsync("ChampionsData.json") as StorageFile;
-                //if (championsFile != null)
-                //{
-                //    // if so then read the file and load the champions data
-                //    loadingText.Text = "saved champion data file found. destroying and fetching new champion data";
-                //    Task task2 = Task.Run(async () => { championsData = await creepScore.RetrieveChampionsData(CreepScore.Region.NA, CreepScoreAPI.Constants.StaticDataConstants.ChampData.All); });
-                //    task2.Wait();
-                //    await FileIO.WriteTextAsync(championsFile, championsData.ToString());
-
-                //    // then launch into the main application
-                //    loadingText.Text = "launching";
-                //    LaunchIntoApplication();
-                //}
-                //else
-                //{
-                //    // if not then load it from the internet
-                //    loadingText.Text = "saved champion data file not found. fetching current champion data";
-                //    championsFile = await localFolder.CreateFileAsync("ChampionsData.json");
-                //    Task task2 = Task.Run(async () => { championsData = await creepScore.RetrieveChampionsData(CreepScore.Region.NA, CreepScoreAPI.Constants.StaticDataConstants.ChampData.All); });
-                //    task2.Wait();
-                //    await FileIO.WriteTextAsync(championsFile, championsData.ToString());
-
-                //    // now launch into the main application
-                //    loadingText.Text = "launching";
-                //    LaunchIntoApplication();
-                //}
-
                 loadingText.Text = "fetching current champion data";
                 AppConstants.championsData = await ReadAndOverwriteData<ChampionListStatic, StaticDataConstants.ChampData>(CreepScore.Region.NA, AppConstants.championsData, StaticDataConstants.ChampData.All, localFolder, "ChampionsData.json", AppConstants.creepScore.RetrieveChampionsData);
 
@@ -207,6 +127,22 @@ namespace CreepScoreApp
             }
         }
 
+        /// <summary>
+        /// Reads data from a file and returns it, contains data by ID field
+        /// </summary>
+        /// <typeparam name="T1">The object type to return</typeparam>
+        /// <typeparam name="T2">The data section enum</typeparam>
+        /// <param name="region">The region to load information from</param>
+        /// <param name="data">The object we should store the loaded data in</param>
+        /// <param name="staticDataType">The data section we should load</param>
+        /// <param name="localFolder">The folder the file resides in</param>
+        /// <param name="fileName">The filename</param>
+        /// <param name="loadFunction">The function that will load the data</param>
+        /// <param name="retrieveFunction">The function that will retrieve the data</param>
+        /// <param name="locale">The locale we should use</param>
+        /// <param name="version">The patch number we should load data from</param>
+        /// <param name="dataById">If we want to load data using IDs</param>
+        /// <returns>Returns the object (T1) with loaded data</returns>
         async Task<T1> ReadAndLoadData<T1, T2>(CreepScore.Region region,
             T1 data,
             T2 staticDataType,
@@ -239,6 +175,21 @@ namespace CreepScoreApp
             }
         }
 
+        /// <summary>
+        /// Reads data from a file and returns it. If the file doesn't exist it creates the file and retrieves the data. Doesn't contain data by ID field
+        /// </summary>
+        /// <typeparam name="T1">The object type to return</typeparam>
+        /// <typeparam name="T2">The data section enum</typeparam>
+        /// <param name="region">The region to load information from</param>
+        /// <param name="data">The object we should store the loaded data in</param>
+        /// <param name="staticDataType">The data section we should load</param>
+        /// <param name="localFolder">The folder the file resides in</param>
+        /// <param name="fileName">The filename</param>
+        /// <param name="loadFunction"></param>
+        /// <param name="retrieveFunction"></param>
+        /// <param name="locale">The locale we should use</param>
+        /// <param name="version">The patch number we should load data from</param>
+        /// <returns>Returns the object (T1) with loaded data</returns>
         async Task<T1> ReadAndLoadData<T1, T2>(CreepScore.Region region,
             T1 data,
             T2 staticDataType,
@@ -271,6 +222,22 @@ namespace CreepScoreApp
             }
         }
 
+        /// <summary>
+        /// Overwrites a file with newly retrieved data. Contains data by ID field.
+        /// </summary>
+        /// <typeparam name="T1">The object type to return</typeparam>
+        /// <typeparam name="T2">The data section enum</typeparam>
+        /// <param name="region">The region to load information from</param>
+        /// <param name="data">The object we should store the loaded data in</param>
+        /// <param name="staticDataType">The data section we should load</param>
+        /// <param name="localFolder">The folder the file resides in</param>
+        /// <param name="fileName">The filename</param>
+        /// <param name="loadFunction">The function that will load the data</param>
+        /// <param name="retrieveFunction">The function that will retrieve the data</param>
+        /// <param name="locale">The locale we should use</param>
+        /// <param name="version">The patch number we should load data from</param>
+        /// <param name="dataById">If we want to load data using IDs</param>
+        /// <returns>Returns the object (T1) with loaded data</returns>
         async Task<T1> ReadAndOverwriteData<T1, T2>(CreepScore.Region region,
             T1 data,
             T2 staticDataType,
@@ -299,6 +266,21 @@ namespace CreepScoreApp
             }
         }
 
+        /// <summary>
+        /// Overwrites a file with newly retrieved data. Doesn't contain data by ID field
+        /// </summary>
+        /// <typeparam name="T1">The object type to return</typeparam>
+        /// <typeparam name="T2">The data section enum</typeparam>
+        /// <param name="region">The region to load information from</param>
+        /// <param name="data">The object we should store the loaded data in</param>
+        /// <param name="staticDataType">The data section we should load</param>
+        /// <param name="localFolder">The folder the file resides in</param>
+        /// <param name="fileName">The filename</param>
+        /// <param name="loadFunction"></param>
+        /// <param name="retrieveFunction"></param>
+        /// <param name="locale">The locale we should use</param>
+        /// <param name="version">The patch number we should load data from</param>
+        /// <returns>Returns the object (T1) with loaded data</returns>
         async Task<T1> ReadAndOverwriteData<T1, T2>(CreepScore.Region region,
             T1 data,
             T2 staticDataType,
