@@ -35,6 +35,11 @@ namespace CreepScoreApp
             Task task1 = Task.Run(async () => { AppConstants.realmData = await AppConstants.creepScore.RetrieveRealmData(CreepScore.Region.NA); });
             task1.Wait();
 
+            //List<string> versions = new List<string>();
+            //Task task2 = Task.Run(async () => { versions = await AppConstants.creepScore.RetrieveVersions(CreepScore.Region.NA); });
+            //task2.Wait();
+            //AppConstants.realmData.v = versions[0];
+
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;
             StorageFile realmFile;
 

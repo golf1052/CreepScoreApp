@@ -192,5 +192,16 @@ namespace CreepScoreApp
             await regionSettings.SaveRegionSetting();
             Frame.GoBack();
         }
+
+        private void clearLaunchedButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppConstants.ClearLaunchedSetting();
+        }
+
+        private void clearAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppConstants.ClearLaunchedSetting();
+            AppConstants.ClearThemeSetting();
+        }
     }
 }

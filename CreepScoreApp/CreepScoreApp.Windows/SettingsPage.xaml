@@ -68,6 +68,8 @@
         			<ComboBoxItem Content="Turkey"/>
         		</ComboBox>
         	</StackPanel>
+        	<Button x:Name="clearLaunchedButton" Content="Clear Launched Setting" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="clearLaunchedButton_Click"/>
+        	<Button x:Name="clearAllButton" Content="Clear All Settings" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="clearAllButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

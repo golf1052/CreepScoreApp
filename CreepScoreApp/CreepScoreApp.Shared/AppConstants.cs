@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace CreepScoreApp.Constants
 {
-    public class AppConstants
+    public static class AppConstants
     {
         public static CreepScore creepScore;
         public static RealmStatic realmData;
@@ -358,6 +358,22 @@ namespace CreepScoreApp.Constants
             catch
             {
                 return null;
+            }
+        }
+
+        public static void ClearThemeSetting()
+        {
+            if (ApplicationData.Current.RoamingSettings.Values.ContainsKey("IsLightTheme"))
+            {
+                ApplicationData.Current.RoamingSettings.Values.Remove("IsLightTheme");
+            }
+        }
+
+        public static void ClearLaunchedSetting()
+        {
+            if (ApplicationData.Current.RoamingSettings.Values.ContainsKey("LaunchedApp"))
+            {
+                ApplicationData.Current.RoamingSettings.Values.Remove("LaunchedApp");
             }
         }
     }

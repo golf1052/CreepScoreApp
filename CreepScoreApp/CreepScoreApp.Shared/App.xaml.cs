@@ -36,7 +36,7 @@ namespace CreepScoreApp
 #if WINDOWS_PHONE_APP
         private TransitionCollection transitions;
 #endif
-        CreepScore creepScore = new CreepScore(ApiKey.apiKey);
+        CreepScore creepScore = new CreepScore(ApiKey.apiKey, 10, 500);
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -165,6 +165,8 @@ namespace CreepScoreApp
             // Ensure the current window is active
             Window.Current.Activate();
         }
+
+        
 
 #if WINDOWS_PHONE_APP
         /// <summary>
