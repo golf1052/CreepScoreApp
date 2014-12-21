@@ -10,7 +10,10 @@
     <Grid x:Name="mainGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     	<Hub x:Name="mainHub">
             <Hub.Header>
-                <Image Source="Assets/CreepScoreLogo.png" Height="100"/>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Assets/CreepScoreLogo.png" Height="100"/>
+                    <AppBarButton x:Name="statusButton" Icon="Important" IsCompact="True" VerticalAlignment="Center" Click="statusButton_Click"/>
+                </StackPanel>
             </Hub.Header>
             <HubSection x:Name="heroSection" Loaded="heroSection_Loaded">
                 <HubSection.Background>

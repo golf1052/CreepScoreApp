@@ -167,7 +167,7 @@ namespace CreepScoreApp
             searchingForSummonerRing.IsActive = true;
             //heroName.Focus(FocusState.Programmatic);
             string summonerName = args.QueryText;
-            CreepScore.Region region = (CreepScore.Region)regionComboBox.SelectedIndex;
+            CreepScore.Region region = (CreepScore.Region)AppConstants.CreepScoreRegion(regionComboBox.SelectedIndex);
 
             Summoner summoner = await AppConstants.creepScore.RetrieveSummoner(region, summonerName);
 
@@ -210,6 +210,8 @@ namespace CreepScoreApp
             }
         }
 
+        
+
         private void cannotFindSummonerTextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             errorTextBlock = sender as TextBlock;
@@ -224,6 +226,14 @@ namespace CreepScoreApp
         {
             searchingForSummonerRing = sender as ProgressRing;
             searchingForSummonerRing.Foreground = AppConstants.themeColor;
+        }
+
+        private async void statusButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShardStatus shardStatus = await AppConstants.creepScore.RetrieveShardStatus(AppConstants.preferredRegion);
+            List<object> parameters = new List<object>();
+            parameters.Add(shardStatus);
+            Frame.Navigate(typeof(StatusPage), parameters);
         }
     }
 }

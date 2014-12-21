@@ -376,5 +376,63 @@ namespace CreepScoreApp.Constants
                 ApplicationData.Current.RoamingSettings.Values.Remove("LaunchedApp");
             }
         }
+
+        public static int CreepScoreRegion(int comboBoxNumber)
+        {
+            if (comboBoxNumber == 0)
+            {
+                // NA
+                return 1;
+            }
+            else if (comboBoxNumber == 1)
+            {
+                // EUW
+                return 2;
+            }
+            else if (comboBoxNumber == 2)
+            {
+                // EUNE
+                return 3;
+            }
+            else if (comboBoxNumber == 3)
+            {
+                // OCE
+                return 7;
+            }
+            else if (comboBoxNumber == 4)
+            {
+                // KR
+                return 8;
+            }
+            else if (comboBoxNumber == 5)
+            {
+                // BR
+                return 4;
+            }
+            else if (comboBoxNumber == 6)
+            {
+                // LAN
+                return 5;
+            }
+            else if (comboBoxNumber == 7)
+            {
+                // LAS
+                return 6;
+            }
+            else if (comboBoxNumber == 8)
+            {
+                // RU
+                return 10;
+            }
+            else if (comboBoxNumber == 9)
+            {
+                // TR
+                return 9;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

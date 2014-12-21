@@ -247,7 +247,7 @@ namespace CreepScoreApp
             }
             else if (subType == GameConstants.SubType.Hexakill)
             {
-                return "Hexakill";
+                return "Summoners Rift Hexakill";
             }
             else if (subType == GameConstants.SubType.Urf)
             {
@@ -256,6 +256,22 @@ namespace CreepScoreApp
             else if (subType == GameConstants.SubType.UrfCoop)
             {
                 return "Ultra Rapid Fire Coop";
+            }
+            else if (subType == GameConstants.SubType.DoomBots)
+            {
+                return "Doom Bots of Doom";
+            }
+            else if (subType == GameConstants.SubType.Ascension)
+            {
+                return "Ascension";
+            }
+            else if (subType == GameConstants.SubType.TwistedTreelineHexakill)
+            {
+                return "Twisted Treeline Hexakill";
+            }
+            else if (subType == GameConstants.SubType.KingPoro)
+            {
+                return "King Poro";
             }
             else
             {
@@ -288,6 +304,14 @@ namespace CreepScoreApp
             else if (gameMode == GameConstants.GameMode.FirstBlood)
             {
                 return "Showdown";
+            }
+            else if (gameMode == GameConstants.GameMode.Ascension)
+            {
+                return "Ascension";
+            }
+            else if (gameMode == GameConstants.GameMode.KingPoro)
+            {
+                return "King Poro";
             }
             else
             {

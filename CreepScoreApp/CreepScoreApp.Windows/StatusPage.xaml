@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="CreepScoreApp.StatusPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CreepScoreApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    	<Hub>
+            <Hub.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Center" Click="backButton_Click">
+                        <SymbolIcon Symbol="Back"/>
+                    </Button>
+                    <TextBlock Text="Service Status" Margin="20,0,0,0"/>
+                </StackPanel>
+            </Hub.Header>
+    		<HubSection x:Name="gameHubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="gameEllipse" Width="25" Fill="Red" Height="25" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Game"/>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid/>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="storeHubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="storeEllipse" Width="25" Fill="Red" Height="25" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Store"/>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid/>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="boardsHubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="boardsEllipse" Width="25" Fill="Red" Height="25" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Boards"/>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid/>
+    			</DataTemplate>
+    		</HubSection>
+    		<HubSection x:Name="websiteHubSection">
+                <HubSection.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse x:Name="websiteEllipse" Width="25" Fill="Red" Height="25" Margin="0,0,5,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Website"/>
+                    </StackPanel>
+                </HubSection.Header>
+    			<DataTemplate>
+    				<Grid/>
+    			</DataTemplate>
+    		</HubSection>
+    	</Hub>
+
+    </Grid>
+</Page>
