@@ -167,7 +167,7 @@ namespace CreepScoreApp
             searchingForSummonerRing.IsActive = true;
             //heroName.Focus(FocusState.Programmatic);
             string summonerName = args.QueryText;
-            CreepScore.Region region = (CreepScore.Region)AppConstants.CreepScoreRegion(regionComboBox.SelectedIndex);
+            CreepScore.Region region = (CreepScore.Region)AppConstants.GetCreepScoreRegion(regionComboBox.SelectedIndex);
 
             Summoner summoner = await AppConstants.creepScore.RetrieveSummoner(region, summonerName);
 

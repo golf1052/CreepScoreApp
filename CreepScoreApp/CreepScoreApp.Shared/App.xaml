@@ -240,6 +240,20 @@
         		</StackPanel>
         	</Grid>
         </DataTemplate>
+        <DataTemplate x:Key="StatusListViewTemplate">
+        	<Grid>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="Auto"/>
+        			<RowDefinition Height="Auto"/>
+        		</Grid.RowDefinitions>
+        		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal">
+        			<TextBlock TextWrapping="Wrap" Text="{Binding Author}" Foreground="#FFAE350F" FontWeight="Bold"/>
+        			<TextBlock TextWrapping="Wrap" Text="-" Margin="5,0"/>
+        			<TextBlock TextWrapping="Wrap" Text="{Binding Date}" FontWeight="Bold"/>
+        		</StackPanel>
+        		<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Message}" VerticalAlignment="Top" Grid.Row="2"/>
+        	</Grid>
+        </DataTemplate>
 	</Application.Resources>
 
 </Application>

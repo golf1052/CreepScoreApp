@@ -19,7 +19,7 @@ namespace CreepScoreApp
         {
             this.comboBox = comboBox;
             this.canChangeSettings = canChangeSettings;
-            comboBox.SelectedIndex = (int)AppConstants.preferredRegion;
+            comboBox.SelectedIndex = AppConstants.SetCreepScoreRegion((int)AppConstants.preferredRegion);
             comboBox.SelectionChanged += comboBox_SelectionChanged;
         }
 
@@ -27,14 +27,14 @@ namespace CreepScoreApp
         {
             if (canChangeSettings)
             {
-                AppConstants.preferredRegion = (CreepScore.Region)comboBox.SelectedIndex;
+                AppConstants.preferredRegion = (CreepScore.Region)AppConstants.GetCreepScoreRegion(comboBox.SelectedIndex);
             }
         }
 
         public  async Task SaveRegionSetting()
         {
             StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            AppConstants.preferredRegion = (CreepScore.Region)comboBox.SelectedIndex;
+            AppConstants.preferredRegion = (CreepScore.Region)AppConstants.GetCreepScoreRegion(comboBox.SelectedIndex);
             StorageFile regionFile = await AppConstants.TryCreateFile("Region.json", localFolder);
             await AppConstants.OverwriteFile(regionFile, UrlConstants.GetRegion(AppConstants.preferredRegion));
         }

@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\RecentGameListViewBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\RunePageInfoListViewBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\SkinsGridViewBinding.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Binding Classes\StatusListViewBinding.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>

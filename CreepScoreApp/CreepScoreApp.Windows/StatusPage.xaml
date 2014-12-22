@@ -15,6 +15,19 @@
                         <SymbolIcon Symbol="Back"/>
                     </Button>
                     <TextBlock Text="Service Status" Margin="20,0,0,0"/>
+                    <ComboBox x:Name="regionComboBox" Width="200" SelectedIndex="0" Margin="10,0,0,0" HorizontalContentAlignment="Stretch" SelectionChanged="regionComboBox_SelectionChanged" VerticalAlignment="Center" Loaded="regionComboBox_Loaded">
+                        <ComboBoxItem Content="North America"/>
+                        <ComboBoxItem Content="Europe West"/>
+                        <ComboBoxItem Content="Europe Nordic &amp; East"/>
+                        <ComboBoxItem Content="Oceania"/>
+                        <ComboBoxItem Content="Korea"/>
+                        <ComboBoxItem Content="Brazil"/>
+                        <ComboBoxItem Content="Latin America North"/>
+                        <ComboBoxItem Content="Latin America South"/>
+                        <ComboBoxItem Content="Russia"/>
+                        <ComboBoxItem Content="Turkey"/>
+                    </ComboBox>
+                    <AppBarButton x:Name="refreshStatusButton" HorizontalAlignment="Stretch" Icon="Refresh" Label="AppBarButton" VerticalAlignment="Stretch" IsCompact="True" Click="refreshStatusButton_Click"/>
                 </StackPanel>
             </Hub.Header>
     		<HubSection x:Name="gameHubSection">
@@ -25,7 +38,9 @@
                     </StackPanel>
                 </HubSection.Header>
     			<DataTemplate>
-    				<Grid/>
+    				<Grid>
+    					<ListView x:Name="gameListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource StatusListViewTemplate}" Loaded="gameListView_Loaded" Width="500" SelectionMode="None"/>
+    				</Grid>
     			</DataTemplate>
     		</HubSection>
     		<HubSection x:Name="storeHubSection">
@@ -36,7 +51,9 @@
                     </StackPanel>
                 </HubSection.Header>
     			<DataTemplate>
-    				<Grid/>
+    				<Grid>
+    					<ListView x:Name="storeListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource StatusListViewTemplate}" Width="500" Loaded="storeListView_Loaded" SelectionMode="None"/>
+    				</Grid>
     			</DataTemplate>
     		</HubSection>
     		<HubSection x:Name="boardsHubSection">
@@ -47,7 +64,9 @@
                     </StackPanel>
                 </HubSection.Header>
     			<DataTemplate>
-    				<Grid/>
+    				<Grid>
+    					<ListView x:Name="boardsListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource StatusListViewTemplate}" Width="500" Loaded="boardsListView_Loaded" SelectionMode="None"/>
+    				</Grid>
     			</DataTemplate>
     		</HubSection>
     		<HubSection x:Name="websiteHubSection">
@@ -58,7 +77,9 @@
                     </StackPanel>
                 </HubSection.Header>
     			<DataTemplate>
-    				<Grid/>
+    				<Grid>
+    					<ListView x:Name="websiteListView" HorizontalAlignment="Left" VerticalAlignment="Top" ItemTemplate="{StaticResource StatusListViewTemplate}" Width="500" Loaded="websiteListView_Loaded" SelectionMode="None"/>
+    				</Grid>
     			</DataTemplate>
     		</HubSection>
     	</Hub>

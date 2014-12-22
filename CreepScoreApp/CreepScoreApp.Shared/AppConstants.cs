@@ -377,7 +377,12 @@ namespace CreepScoreApp.Constants
             }
         }
 
-        public static int CreepScoreRegion(int comboBoxNumber)
+        /// <summary>
+        /// Take in a region combo box selected index and return the appropriate region
+        /// </summary>
+        /// <param name="comboBoxNumber">The combo box number</param>
+        /// <returns>The CreepScore.Region region</returns>
+        public static int GetCreepScoreRegion(int comboBoxNumber)
         {
             if (comboBoxNumber == 0)
             {
@@ -425,6 +430,69 @@ namespace CreepScoreApp.Constants
                 return 10;
             }
             else if (comboBoxNumber == 9)
+            {
+                // TR
+                return 9;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// Take in a CreepScore.Region region and return the appropriate region combo box number
+        /// </summary>
+        /// <param name="regionNumber">The CreepScore.Region region as an int</param>
+        /// <returns>The appropriate region combo box number</returns>
+        public static int SetCreepScoreRegion(int regionNumber)
+        {
+            if (regionNumber == 1)
+            {
+                // NA
+                return 0;
+            }
+            else if (regionNumber == 2)
+            {
+                // EUW
+                return 1;
+            }
+            else if (regionNumber == 3)
+            {
+                // EUNE
+                return 2;
+            }
+            else if (regionNumber == 7)
+            {
+                // OCE
+                return 3;
+            }
+            else if (regionNumber == 8)
+            {
+                // KR
+                return 4;
+            }
+            else if (regionNumber == 4)
+            {
+                // BR
+                return 5;
+            }
+            else if (regionNumber == 5)
+            {
+                // LAN
+                return 6;
+            }
+            else if (regionNumber == 6)
+            {
+                // LAS
+                return 7;
+            }
+            else if (regionNumber == 10)
+            {
+                // RU
+                return 8;
+            }
+            else if (regionNumber == 9)
             {
                 // TR
                 return 9;
